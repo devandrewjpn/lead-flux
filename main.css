@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+}
+
+[data-astronaut] {
+    width: 500px;
+    position: absolute;
+    left: 7%;
+    bottom: 1%;
+    transform: rotate(270deg);
+    filter: grayscale(0.1);
+    opacity: 0.8;
+    animation: flying 15s ease-in-out infinite;
+}
+
+@media screen and (max-width:800px) {
+    [data-astronaut] {
+        display: none;
+    }
+}
+
+@keyframes flying {
+    0%, 100% {
+        bottom: 1%;
+        transform: rotate(220deg);
+    }
+    50% {
+        bottom: 15%;
+        transform: rotate(300deg);
+    }
+}
+
+body {
+    margin: 0;
+    background-image: url(space.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    z-index: 5;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    background-color: #212121;
+}
+pre {
+    color: white;
+}
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* form steps */
+
+.moveAndFade {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .moveAndFade.hide {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+/* form steps */
+
+/* field */
+
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 17px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+  
+  .form__field::placeholder {
+    color: transparent;
+  }
+  
+  .form__field:placeholder-shown ~ .form__label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+  }
+  
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+  }
+  
+  .form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #EE7D00, #FCC200);
+    border-image-slice: 1;
+  }
+  
+  .form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #FCC200;
+    font-weight: 700;
+  }
+  
+  /* reset input */
+  .form__field:required, .form__field:invalid {
+    box-shadow: none;
+  }
+
+  /* field */
+
+  /* buttons */
+
+  .control__box {
+    display: flex;
+    gap: .4rem;
+  }
+
+  .control__box button {
+    background: #000;
+    color: white;
+    border: 1px solid #fb1;
+    padding: .3rem .8rem;
+    border-radius: 3px;
+    transition: .4s;
+    cursor: pointer;
+  }
+
+  .control__box button:disabled {
+    background: #f2f2f2;
+    color: #9b9b9b;
+    cursor: no-drop;
+  }
+
+  .control__box button:hover {
+    outline: none;
+    box-shadow: 0 0 0 2px #fea, 0 0 0 2px #fb1;
+  }
+
+  /* buttons */
+
+  /* toast */
+
+  .toast-container {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .toast {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-50%) translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-50%) translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  /* toast */
+
+  
+  .radio-container {
+    margin: 0 auto;
+    justify-content: center;
+    color: white;
+    display: flex;
+    gap: .7rem;
+  }
+  
+  .radio-wrapper {
+    margin-bottom: 20px;
+  }
+  
+  .radio-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .radio-button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .radio-button input[type="radio"] {
+    display: none;
+  }
+  
+  .radio-checkmark {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border: 2px solid #333;
+    border-radius: 50%;
+  }
+  
+  .radio-checkmark:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fb1;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .radio-button input[type="radio"]:checked ~ .radio-checkmark:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .radio-label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+
+  /* radios */
