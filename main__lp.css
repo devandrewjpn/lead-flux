@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(space.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    background-attachment: fixed;
+}
+pre {
+    color: white;
+}
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-right: 8rem;
+}
+.text {
+    color: white;
+    text-align: end;
+    font-size: 1.5rem;
+    max-width: 50%;
+    padding-top: 8rem;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.text h1 {
+    line-height: 2.9rem;
+}
+.text p {
+    line-height: 2.2rem;
+    font-weight: 200;
+}
+main {
+    height: 2000px;
+}
+.content {
+    padding: 20px;
+}
+
+[data-astronaut] {
+    position: absolute;
+    top: 0;
+    width: 45%;
+    margin: 4rem;
+    height: auto;
+}
+.scroll__down {
+    background-repeat: no-repeat;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    color: white;
+    text-transform: uppercase;
+    margin: 6rem 0;
+    position: relative;
+    animation: down 1s ease-in-out infinite;
+}
+@keyframes down {
+    0%, 100% {
+        bottom: 1%;
+    }
+    50% {
+        bottom: 2%;
+    }
+}
+.promo__box {
+    color: white;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 0 0 6rem 2rem;
+}
+.hero h2 {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 2rem;
+}
+.promo_baloon {
+    backdrop-filter: blur(4px) saturate(102%);
+    -webkit-backdrop-filter: blur(4px) saturate(102%);
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    transition: .4s;
+    padding: 2rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+.promo_baloon:hover {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.486);
+    cursor: pointer;
+}
+.service_baloon svg {
+    width: 60px;
+    height: 60px;
+}
+.services {
+    padding-left: 2rem;
+    max-width: 45%;
+}
+.owl-stage-outer {
+    border-radius: 10px;
+}
+.service {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: start;
+    gap: 10px;
+    color: white;
+    width: auto;
+    min-height: 100px;
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: #20202091;
+    background-image: url(saturn.svg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+}
+.service svg {
+    width: 60px;
+    height: 60px;
+}
+.service p {
+    margin: 0;
+    font-weight: 300;
+    color: #ffffff96;
+}
+.service span {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.service::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+footer {
+    padding: 4rem 3rem 8rem 5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.primary-button {
+    background-color: #fb1;
+    font-size: 1.4rem;
+    border: none;
+    color: black;
+    padding: .6rem 1rem;
+    transition: .4s;
+    border-radius: 3px;
+}
+.primary-button:hover {
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 0 0 2px #fea, 0 0 0 2px #fb1;
+    background-color: rgb(255, 199, 56);
+}
+.footer_socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.footer__promo h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.Btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    /* overflow: hidden; */
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+  
+  .svgContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    letter-spacing: 0.8px;
+    border-radius: 10px;
+    transition: all .3s;
+    border: 1px solid rgba(156, 156, 156, 0.466);
+  }
+  
+  .BG {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #181818;
+    z-index: -1;
+    border-radius: 10px;
+    pointer-events: none;
+    transition: all .3s;
+  }
+  
+  .Btn:hover .BG {
+    transform: rotate(35deg);
+    transform-origin: bottom;
+  }
+  
+  .Btn:hover .svgContainer {
+    background-color: rgba(156, 156, 156, 0.466);
+    backdrop-filter: blur(4px);
+  }
+  .ui-btn {
+    --btn-default-bg: rgb(41, 41, 41);
+    --btn-padding: 15px 20px;
+    --btn-hover-bg: rgb(51, 51, 51);
+    --btn-transition: .3s;
+    --btn-letter-spacing: .1rem;
+    --btn-animation-duration: 1.2s;
+    --btn-shadow-color: rgba(0, 0, 0, 0.137);
+    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+    --hover-btn-color: #fb1;
+    --default-btn-color: #fff;
+    --font-size: 1.1rem;
+    --font-weight: 600;
+    --font-family: Menlo,Roboto Mono,monospace;
+  }
+  
+  /* button settings 👆 */
+  
+  .ui-btn {
+    box-sizing: border-box;
+    padding: var(--btn-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--default-btn-color);
+    font: var(--font-weight) var(--font-size) var(--font-family);
+    background: var(--btn-default-bg);
+    border: none;
+    cursor: pointer;
+    transition: var(--btn-transition);
+    overflow: hidden;
+    box-shadow: var(--btn-shadow);
+  }
+  
+  .ui-btn span {
+    letter-spacing: var(--btn-letter-spacing);
+    transition: var(--btn-transition);
+    box-sizing: border-box;
+    position: relative;
+    background: inherit;
+  }
+  
+  .ui-btn span::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    background: inherit;
+  }
+  
+  .ui-btn:hover, .ui-btn:focus {
+    background: var(--btn-hover-bg);
+  }
+  
+  .ui-btn:hover span, .ui-btn:focus span {
+    color: var(--hover-btn-color);
+  }
+  
+  .ui-btn:hover span::before, .ui-btn:focus span::before {
+    animation: chitchat linear both var(--btn-animation-duration);
+  }
+  
+  @keyframes chitchat {
+    0% {
+      content: "#";
+    }
+  
+    5% {
+      content: ".";
+    }
+  
+    10% {
+      content: "^{";
+    }
+  
+    15% {
+      content: "-!";
+    }
+  
+    20% {
+      content: "#$_";
+    }
+  
+    25% {
+      content: "№:0";
+    }
+  
+    30% {
+      content: "#{+.";
+    }
+  
+    35% {
+      content: "@}-?";
+    }
+  
+    40% {
+      content: "?{4@%";
+    }
+  
+    45% {
+      content: "=.,^!";
+    }
+  
+    50% {
+      content: "?2@%";
+    }
+  
+    55% {
+      content: "\;1}]";
+    }
+  
+    60% {
+      content: "?{%:%";
+      right: 0;
+    }
+  
+    65% {
+      content: "|{f[4";
+      right: 0;
+    }
+  
+    70% {
+      content: "{4%0%";
+      right: 0;
+    }
+  
+    75% {
+      content: "'1_0<";
+      right: 0;
+    }
+  
+    80% {
+      content: "{0%";
+      right: 0;
+    }
+  
+    85% {
+      content: "]>'";
+      right: 0;
+    }
+  
+    90% {
+      content: "4";
+      right: 0;
+    }
+  
+    95% {
+      content: "2";
+      right: 0;
+    }
+  
+    100% {
+      content: "";
+      right: 0;
+    }
+  }
+::-webkit-scrollbar {
+    width: 2px;
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #000;
+}
+
+@media screen and (max-width:800px) {
+    [data-astronaut] {
+        display: none;
+    }
+    .text {
+        text-align: center;
+        max-width: 100%;
+        align-items: center;
+    }
+    header {
+        padding: 1rem;
+        justify-content: center;
+    }
+    .promo__box {
+        grid-template-columns: 1fr;
+    }
+    .services {
+        max-width: 100%;
+    }
+    .footer__promo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .footer_socials {
+        justify-content: center;
+    }
+    .footer__copyright {
+        text-align: center;
+    }
+}

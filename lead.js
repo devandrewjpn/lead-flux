@@ -21,177 +21,203 @@ field__box.innerHTML = `
 <label for="name" class="form__label">Nome</label>
 </div>`
 
-let currentField = 'nome'
+var currentField = 'nome'
 
 foward.addEventListener("click", (event) => {
 
-  field__box.classList.add('hide')
+    if(document.querySelector('.input__wrap').querySelector('input').value == '') {
+      if(document.querySelector('.error') !== null) {
 
-  switch (currentField) {
-    case 'nome':
-      setTimeout(function () {
-        field__box.innerHTML = `
-        <pre>Insira nome da sua empresa</pre>
-        <div class="form__group field">
-            <input type="input" name="empresa" class="form__field" onchange=(handleValue(event)) value="${sessionStorage.getItem('empresa') ? sessionStorage.getItem('empresa') : ''}" placeholder="Nome da empresa">
-            <label for="empresa" class="form__label">Nome da empresa</label>
-            </div>`
-        field__box.classList.remove('hide')
-      }, 500)
-      currentField = 'empresa'
-      back.style.display = 'block'
-      break;
+      } else {
+        var message = document.createElement('div')
+        message.classList.add('error')
+        message.textContent = 'Preencha o campo corretamente para prosseguir.'
+        message.style.color = 'red'
+        document.querySelector('.control__box').parentNode.insertBefore(message,document.querySelector('.control__box'))
+      }
+    } else {
 
-    case 'empresa':
-      setTimeout(function () {
-        field__box.innerHTML = `
-        <pre>Insira o seu telefone para contato</pre>
-        <div class="form__group field">
-            <input type="number" name="telefone" class="form__field" onchange=(handleValue(event)) value="${sessionStorage.getItem('telefone') ? sessionStorage.getItem('telefone') : ''}" placeholder="Telefone">
-            <label for="telefone" class="form__label">Telefone</label>
-            </div>`
-        field__box.classList.remove('hide')
-      }, 500)
-      currentField = 'telefone'
-      break;
+      if(document.querySelector('.error')) document.querySelector('.error').remove()
+      field__box.classList.add('hide')
 
-    case 'telefone':
-      setTimeout(function () {
-        field__box.innerHTML = `
-          <pre>Insira o seu melhor e-mail</pre>
-          <div class="form__group field">
-            <input type="email" name="email" class="form__field" onchange=(handleValue(event)) value="${sessionStorage.getItem('email') ? sessionStorage.getItem('email') : ''}" placeholder="E-mail">
-            <label for="email" class="form__label">E-mail</label>
-            </div>`
-        field__box.classList.remove('hide')
-      }, 500)
-      currentField = 'email'
-      break;
+      switch (currentField) {
+        case 'nome':
+          setTimeout(function () {
+            field__box.innerHTML = `
+            <pre>Insira nome da sua empresa</pre>
+            <div class="form__group field">
+                <input type="input" name="empresa" class="form__field" onchange=(handleValue(event)) value="${sessionStorage.getItem('empresa') ? sessionStorage.getItem('empresa') : ''}" placeholder="Nome da empresa">
+                <label for="empresa" class="form__label">Nome da empresa</label>
+                </div>`
+            field__box.classList.remove('hide')
+          }, 500)
+          currentField = 'empresa'
+          back.style.display = 'block'
+          break;
 
-    case 'email':
-      setTimeout(function () {
-        field__box.innerHTML = `
-            <pre>Quantos funcionários compoem a sua empresa?</pre>
-            <div class="radio-container">
-              <div class="radio-wrapper">
-                <label class="radio-button">
-                  <input id="option1" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '0-10' ? 'checked' : ''}>
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">0-10</span>
-                </label>
-              </div>
-            
-              <div class="radio-wrapper">
-                <label class="radio-button">
-                  <input id="option2" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '11-30' ? 'checked' : ''}>
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">11-30</span>
-                </label>
-              </div>
-            
-              <div class="radio-wrapper">
-                <label class="radio-button">
-                  <input id="option3" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '31-50' ? 'checked' : ''}>
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">31-50</span>
-                </label>
-              </div>
-            
-              <div class="radio-wrapper">
-                <label class="radio-button">
-                  <input id="option3" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '51-100' ? 'checked' : ''}>
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">51-100</span>
-                </label>
-              </div>
-            </div>
-            `
-        field__box.classList.remove('hide')
-      }, 500)
-      currentField = 'funcionarios'
-      break;
+        case 'empresa':
+          setTimeout(function () {
+            field__box.innerHTML = `
+            <pre>Insira o seu telefone para contato</pre>
+            <div class="form__group field">
+                <input type="number" name="telefone" class="form__field" onchange=(handleValue(event)) value="${sessionStorage.getItem('telefone') ? sessionStorage.getItem('telefone') : ''}" placeholder="Telefone">
+                <label for="telefone" class="form__label">Telefone</label>
+                </div>`
+            field__box.classList.remove('hide')
+          }, 500)
+          currentField = 'telefone'
+          break;
 
-    case 'funcionarios':
-      setTimeout(function () {
-        field__box.innerHTML = `
-            <pre>Já anuncia online?</pre>
-            <div class="radio-container">
-             <div class="radio-wrapper">
-               <label class="radio-button">
-                 <input id="option1" name="online" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('online') == 'Sim' ? 'checked' : ''}>
-                 <span class="radio-checkmark"></span>
-                 <span class="radio-label">Sim</span>
-               </label>
-             </div>
-          
-             <div class="radio-wrapper">
-               <label class="radio-button">
-                 <input id="option2" name="online" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('online') == 'Não' ? 'checked' : ''}>
-                 <span class="radio-checkmark"></span>
-                 <span class="radio-label">Não</span>
-               </label>
-             </div>
-            </div>
-            `
-        field__box.classList.remove('hide')
-      }, 500)
-      currentField = 'online'
+        case 'telefone':
+          setTimeout(function () {
+            field__box.innerHTML = `
+              <pre>Insira o seu melhor e-mail</pre>
+              <div class="form__group field">
+                <input type="email" name="email" class="form__field" onchange=(handleValue(event)) value="${sessionStorage.getItem('email') ? sessionStorage.getItem('email') : ''}" placeholder="E-mail">
+                <label for="email" class="form__label">E-mail</label>
+                </div>`
+            field__box.classList.remove('hide')
+          }, 500)
+          currentField = 'email'
+          break;
 
-      break;
+        case 'email':
+          setTimeout(function () {
+            field__box.innerHTML = `
+                <pre>Quantos funcionários compoem a sua empresa?</pre>
+                <div class="radio-container">
+                  <div class="radio-wrapper">
+                    <label class="radio-button">
+                      <input id="option1" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '0-10' ? 'checked' : ''}>
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">0-10</span>
+                    </label>
+                  </div>
 
-    case 'online':
-      setTimeout(function () {
-        field__box.innerHTML = `
-            <pre>Já possui Social Media?</pre>
-            <div class="radio-container">
-              <div class="radio-wrapper">
-                <label class="radio-button">
-                  <input id="option1" name="social" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('social') == 'Sim' ? 'checked' : ''}>
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">Sim</span>
-                </label>
-              </div>
-          
-              <div class="radio-wrapper">
-                <label class="radio-button">
-                  <input id="option2" name="social" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('social') == 'Não' ? 'checked' : ''}>
-                  <span class="radio-checkmark"></span>
-                  <span class="radio-label">Não</span>
-                </label>
-              </div>
-            </div>
-            `
-        field__box.classList.remove('hide')
-      }, 500)
-      currentField = 'social'
-      foward.style.display = 'none'
-      var send = document.createElement('button')
-      send.classList.add('send')
-      send.textContent = 'Enviar'
-      send.style.backgroundColor = '#673ab7'
-      document.querySelector('.control__box').appendChild(send)
-      send.addEventListener('click',(evento) => {
-        send.textContent = 'Enviando...'
-        setTimeout(() => {
-          window.location.href = 'thankyou.html'
-        }, "2000");
-      })
-      break;
+                  <div class="radio-wrapper">
+                    <label class="radio-button">
+                      <input id="option2" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '11-30' ? 'checked' : ''}>
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">11-30</span>
+                    </label>
+                  </div>
+
+                  <div class="radio-wrapper">
+                    <label class="radio-button">
+                      <input id="option3" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '31-50' ? 'checked' : ''}>
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">31-50</span>
+                    </label>
+                  </div>
+
+                  <div class="radio-wrapper">
+                    <label class="radio-button">
+                      <input id="option3" name="funcionarios" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('funcionarios') == '51-100' ? 'checked' : ''}>
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">51-100</span>
+                    </label>
+                  </div>
+                </div>
+                `
+            field__box.classList.remove('hide')
+          }, 500)
+          currentField = 'funcionarios'
+          break;
+
+        case 'funcionarios':
+          setTimeout(function () {
+            field__box.innerHTML = `
+                <pre>Já anuncia online?</pre>
+                <div class="radio-container">
+                 <div class="radio-wrapper">
+                   <label class="radio-button">
+                     <input id="option1" name="online" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('online') == 'Sim' ? 'checked' : ''}>
+                     <span class="radio-checkmark"></span>
+                     <span class="radio-label">Sim</span>
+                   </label>
+                 </div>
+
+                 <div class="radio-wrapper">
+                   <label class="radio-button">
+                     <input id="option2" name="online" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('online') == 'Não' ? 'checked' : ''}>
+                     <span class="radio-checkmark"></span>
+                     <span class="radio-label">Não</span>
+                   </label>
+                 </div>
+                </div>
+                `
+            field__box.classList.remove('hide')
+          }, 500)
+          currentField = 'online'
+          break;
+
+        case 'online':
+          setTimeout(function () {
+            field__box.innerHTML = `
+                <pre>Já possui Social Media?</pre>
+                <div class="radio-container">
+                  <div class="radio-wrapper">
+                    <label class="radio-button">
+                      <input id="option1" name="social" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('social') == 'Sim' ? 'checked' : ''}>
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">Sim</span>
+                    </label>
+                  </div>
+
+                  <div class="radio-wrapper">
+                    <label class="radio-button">
+                      <input id="option2" name="social" type="radio" onchange="handleRadio(this)" type="radio" ${sessionStorage.getItem('social') == 'Não' ? 'checked' : ''}>
+                      <span class="radio-checkmark"></span>
+                      <span class="radio-label">Não</span>
+                    </label>
+                  </div>
+                </div>
+                `
+            field__box.classList.remove('hide')
+          }, 500)
+          currentField = 'social'
+          foward.style.display = 'none'
+          var send = document.createElement('button')
+          send.classList.add('send')
+          send.textContent = 'Enviar'
+          send.style.backgroundColor = '#673ab7'
+          document.querySelector('.control__box').appendChild(send)
+          send.addEventListener('click',(evento) => {
+            send.textContent = 'Enviando...'
+            fetch('https://agenciabrasildigital.com.br/lp/envia.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                nome:'teste'
+              })
+            }).then((response => response))
+            .then((data) => console.log(data))
+            // setTimeout(() => {
+            //   window.location.href = 'thankyou.html'
+            // }, "2000");
+          })
+          break;
+
+        default:
+          console.log('?');
+          break;
+      }
+
+      if (currentField != 'nome') {
+        back.disabled = false
+      } else {
+        back.disabled = true
+      }
+    }
 
 
-    default:
-      break;
-  }
-
-  if (currentField != 'nome') {
-    back.disabled = false
-  } else {
-    back.disabled = true
-  }
 
 })
 
 back.addEventListener("click", (event) => {
+
   field__box.classList.add('hide')
 
   switch (currentField) {
